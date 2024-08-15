@@ -1,0 +1,108 @@
+
+### `.gitignore`
+
+Файл `.gitignore` используется для исключения ненужных файлов и директорий из вашего репозитория. Это помогает избежать случайного добавления конфиденциальных данных или больших временных файлов. Вот пример `.gitignore` для Python-проекта:
+
+```gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+venv/
+.venv/
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyCharm
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# pytest
+.cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Environments
+.env
+.env.local
+.env.*.json
+.env.*.yaml
+.env.*.yml
+.venv
+venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Pytest
+.pytest_cache/
+__pycache__/
+
+# Profiling data
+.prof
+
+# Backup files
+*.bak
+*.swp
+
+# Logs
+*.log
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Windows
+*.dll
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# JetBrains Rider
+.idea/

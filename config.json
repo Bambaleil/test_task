@@ -1,0 +1,7 @@
+{
+  "error_arguments": "Usage: python {file_name} <config_file> <text_file>",
+  "error_file_extension": "Error: the file '{file_name}' must have a .txt extension",
+  "valid_file": "Valid files",
+  "no_files_exist": "The files are not in the root folder",
+  "file_empty": "The {file_name} file is empty."
+}
