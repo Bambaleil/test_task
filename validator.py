@@ -10,9 +10,9 @@ class Validator:
 
         :param config_loader: An instance of ConfigLoader.
         """
-        self.config = config_loader
+        self._config = config_loader
 
-    def validate_args_length(self, args_length: int, expected_length: int) -> bool:
+    def _validate_args_length(self, args_length: int, expected_length: int) -> bool:
         """
         Validate the number of arguments passed to the script.
 
@@ -21,11 +21,11 @@ class Validator:
         :return: True if the number of arguments is correct, False otherwise.
         """
         if args_length != expected_length:
-            print(self.config.get("error_arguments").format(file_name=os.path.basename(__file__)))
+            print(self._config.get("error_arguments").format(file_name=os.path.basename(__file__)))
             return False
         return True
 
-    def validate_file_existence(self, config_file: str, text_file: str) -> bool:
+    def _validate_file_existence(self, config_file: str, text_file: str) -> bool:
         """
         Validate that the specified files exist.
 
@@ -34,11 +34,11 @@ class Validator:
         :return: True if both files exist, False otherwise.
         """
         if not (os.path.isfile(config_file) and os.path.isfile(text_file)):
-            print(self.config.get("no_files_exist"))
+            print(self._config.get("no_files_exist"))
             return False
         return True
 
-    def validate_file_extensions(self, config_file: str, text_file: str) -> bool:
+    def _validate_file_extensions(self, config_file: str, text_file: str) -> bool:
         """
         Validate that the specified files have the correct extensions.
 
@@ -47,10 +47,10 @@ class Validator:
         :return: True if both files have .txt extensions, False otherwise.
         """
         if not config_file.endswith(".txt"):
-            print(self.config.get("error_file_extension").format(file_name=config_file))
+            print(self._config.get("error_file_extension").format(file_name=config_file))
             return False
         if not text_file.endswith(".txt"):
-            print(self.config.get("error_file_extension").format(file_name=text_file))
+            print(self._config.get("error_file_extension").format(file_name=text_file))
             return False
         return True
 
@@ -62,7 +62,7 @@ class Validator:
         :return: True if the file is not empty, False otherwise.
         """
         if os.stat(text_file).st_size == 0:
-            print(self.config.get("file_empty").format(file_name=text_file))
+            print(self._config.get("file_empty").format(file_name=text_file))
             return False
         return True
 
@@ -76,6 +76,6 @@ class Validator:
         :param text_file: The path to the text file.
         :return: True if all validations pass, False otherwise.
         """
-        return (self.validate_args_length(args_length, expected_length) and
-                self.validate_file_existence(config_file, text_file) and
-                self.validate_file_extensions(config_file, text_file))
+        return (self._validate_args_length(args_length, expected_length) and
+                self._validate_file_existence(config_file, text_file) and
+                self._validate_file_extensions(config_file, text_file))

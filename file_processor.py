@@ -13,10 +13,10 @@ class FileProcessor:
         :param config_loader: An instance of ConfigLoader.
         :param validator: An instance of Validator.
         """
-        self.config = config_loader
-        self.validator = validator
+        self._config = config_loader
+        self._validator = validator
 
-    def load_config(self, config_file: str) -> Dict[str, str] | bool:
+    def _load_config(self, config_file: str) -> Dict[str, str] | bool:
         """
         Load the configuration from a file into a dictionary.
 
@@ -24,7 +24,7 @@ class FileProcessor:
         :return: A dictionary with replacements or False if the file is empty.
         """
         replacements: Dict[str, str] = {}
-        if self.validator.valid_file_empty(text_file=config_file):
+        if self._validator.valid_file_empty(text_file=config_file):
             with open(config_file, 'r') as file:
                 for line in file:
                     key, value = line.strip().split("=")
@@ -32,7 +32,7 @@ class FileProcessor:
             return replacements
         return False
 
-    def replace_in_text(self, text_file: str, replacements: Dict[str, str]) -> List[Tuple[str, int]] | bool:
+    def _replace_in_text(self, text_file: str, replacements: Dict[str, str]) -> List[Tuple[str, int]] | bool:
         """
         Replace text in a file based on the provided replacements dictionary.
 
@@ -41,7 +41,7 @@ class FileProcessor:
         :return: A list of tuples with the modified line and the count of replacements, or False if the file is empty.
         """
         lines_with_replacements: List[Tuple[str, int]] = []
-        if self.validator.valid_file_empty(text_file=text_file) and replacements:
+        if self._validator.valid_file_empty(text_file=text_file) and replacements:
             with open(text_file, "r") as file:
                 for line in file:
                     original_line = line.strip()
@@ -61,9 +61,9 @@ class FileProcessor:
         :param config_file: The path to the configuration file.
         :param text_file: The path to the text file.
         """
-        if self.validator.validate_all(len(sys.argv), 3, config_file, text_file):
-            replacements = self.load_config(config_file)
-            lines_with_replacements = self.replace_in_text(text_file, replacements)
+        if self._validator.validate_all(len(sys.argv), 3, config_file, text_file):
+            replacements = self._load_config(config_file)
+            lines_with_replacements = self._replace_in_text(text_file, replacements)
             if replacements and lines_with_replacements:
                 sorted_lines = sorted(lines_with_replacements, key=lambda x: x[1], reverse=True)
                 for line, _ in sorted_lines:

@@ -34,12 +34,12 @@ class TestFileProcessor(unittest.TestCase):
         os.remove("test_config.json")
 
     def test_load_config(self):
-        replacements = self.processor.load_config("test_config.txt")
+        replacements = self.processor._load_config("test_config.txt")
         self.assertEqual(replacements, {"a": "z", "b": "y", "c": "x"})
 
     def test_replace_in_text(self):
-        replacements = self.processor.load_config("test_config.txt")
-        lines_with_replacements = self.processor.replace_in_text("test_text.txt", replacements)
+        replacements = self.processor._load_config("test_config.txt")
+        lines_with_replacements = self.processor._replace_in_text("test_text.txt", replacements)
         self.assertEqual(lines_with_replacements[0][0], "zyxzyxzyx")
 
     def test_process_files(self):

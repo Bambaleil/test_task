@@ -13,10 +13,10 @@ class ConfigLoader:
         """
         try:
             with open(config_path, 'r', encoding='utf-8') as file:
-                self.config: Dict[str, Any] = json.load(file)
+                self._config: Dict[str, Any] = json.load(file)
         except (FileNotFoundError, JSONDecodeError) as e:
             print(f"File upload error: {e}")
-            self.config = {}
+            self._config = {}
 
     def get(self, key: str) -> Any | None:
         """
@@ -25,4 +25,4 @@ class ConfigLoader:
         :param key: The key to search in the configuration.
         :return: The corresponding value or None if the key is not found.
         """
-        return self.config.get(key, None)
+        return self._config.get(key, None)
