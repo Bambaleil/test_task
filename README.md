@@ -7,12 +7,12 @@
 
 1. Клонируйте репозиторий:
     ```sh
-    git clone https://github.com/yourusername/text-replacement-utility.git
+    git clone https://github.com/Bambaleil/test_task.git
     ```
    
 2. Перейдите в папку проекта:
     ```sh
-    cd text-replacement-utility
+    cd test_task
     ```
 
 3. Создайте виртуальное окружение и активируйте его:
